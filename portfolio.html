@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Faith Sodipe</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+  
+    /* ============================================================
+       LIGHT MODE TOKENS
+    ============================================================ */
+    :root,
+    [data-theme="light"] {
+      --bg:           #FAF7F2;
+      --bg-nav:       #FAF7F2;
+      --bg-callout:   #F3EDE3;
+      --border:       #E4DAC8;
+      --ink:          #1C1A17;
+      --ink-muted:    #6B6459;
+      --accent:       #B05E3A;
+      --accent-light: #F5EAE4;
+      --toggle-bg:    #EDE8DF;
+      --toggle-icon:  #6B6459;
+    }
+
+    /* ============================================================
+       DARK MODE TOKENS
+    ============================================================ */
+    [data-theme="dark"] {
+      --bg:           #18150F;
+      --bg-nav:       #18150F;
+      --bg-callout:   #201C14;
+      --border:       #2E2820;
+      --ink:          #F0EBE1;
+      --ink-muted:    #9A8F82;
+      --accent:       #D4825A;
+      --accent-light: #2A1A10;
+      --toggle-bg:    #2E2820;
+      --toggle-icon:  #9A8F82;
+    }
+    #Themes
+    
+    :root {
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+      --max-width:    700px;
+      --section-gap:  5rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.75;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding-top: var(--section-gap);
+      padding-bottom: var(--section-gap);
+      border-top: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+
+    /* ============================================================
+       ANIMATION KEYFRAMES
+    ============================================================ */
+
+    /* Fade up — for hero text layers */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+
+    /* Fade in — for hero photo */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* Subtle scale-in for the hero photo (gentle Ken Burns feel) */
+    @keyframes heroScale {
+      from { transform: scale(1.04); }
+      to   { transform: scale(1);    }
+    }
+
+    /* Count-up flash for stat numbers */
+    @keyframes statPop {
+      0%   { opacity: 0; transform: translateY(10px) scale(0.92); }
+      60%  { transform: translateY(-2px) scale(1.04); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Underline grow — for section labels on scroll-in */
+    @keyframes labelSlide {
+      from { opacity: 0; letter-spacing: 0.3em; }
+      to   { opacity: 1; letter-spacing: 0.13em; }
+    }
+
+    /* ============================================================
+       SCROLL-REVEAL BASE STATE
+       Elements start invisible; JS adds .revealed to animate them in
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger delay helpers */
+    .reveal-d1 { transition-delay: 0.08s; }
+    .reveal-d2 { transition-delay: 0.16s; }
+    .reveal-d3 { transition-delay: 0.24s; }
+    .reveal-d4 { transition-delay: 0.32s; }
+    .reveal-d5 { transition-delay: 0.40s; }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-nav);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 0;
+      transition: background 0.3s, border-color 0.3s;
+      /* Nav slides down on load */
+      animation: fadeUp 0.5s ease both;
+    }
+
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-name {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+
+    .nav-name:hover { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      text-decoration: none;
+      position: relative;
+      transition: color 0.2s;
+    }
+
+    /* Animated underline on nav links */
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--accent);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .theme-toggle {
+      background: var(--toggle-bg);
+      border: none;
+      border-radius: 99px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+      color: var(--toggle-icon);
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .theme-toggle:hover { opacity: 0.7; transform: rotate(12deg); }
+    .theme-toggle svg { width: 15px; height: 15px; }
+
+    [data-theme="light"] .icon-sun  { display: none; }
+    [data-theme="light"] .icon-moon { display: block; }
+    [data-theme="dark"]  .icon-moon { display: none; }
+    [data-theme="dark"]  .icon-sun  { display: block; }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    #hero {
+      padding: 0;
+      border-top: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /*
+      HERO PHOTO
+      EDIT: Replace "your-photo.jpg" with your own image filename.
+      Place in the same folder as index.html.
+    */
+    .hero-photo {
+      width: 100%;
+      height: clamp(420px, 70vh, 620px);
+      object-fit: cover;
+      object-position: center 15%;
+      display: block;
+      background: linear-gradient(160deg, var(--accent-light) 0%, var(--border) 100%);
+      filter: brightness(0.88) contrast(1.04);
+      /* Gentle scale-in on load */
+      animation: fadeIn 0.8s ease both, heroScale 6s ease both;
+    }
+
+    .hero-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 30%,
+        rgba(0,0,0,0.15) 55%,
+        rgba(0,0,0,0.65) 100%
+      );
+      pointer-events: none;
+    }
+
+    .hero-text {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2.5rem 1.5rem 2.75rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 0.6rem;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 7vw, 4rem);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      color: #fff;
+      margin-bottom: 1rem;
+      animation: fadeUp 0.7s 0.5s ease both;
+    }
+
+    .hero-name em { font-style: italic; color: #F4C5A8; }
+
+    .hero-tagline {
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.8);
+      max-width: 460px;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.7s 0.7s ease both;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.9s ease both;
+    }
+
+    .hero-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      border-bottom: 1.5px solid rgba(255,255,255,0.4);
+      padding-bottom: 1px;
+      transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    }
+
+    .hero-links a:hover {
+      color: #fff;
+      border-color: #fff;
+      transform: translateY(-1px);
+    }
+
+    /* ============================================================
+       SECTION LABEL
+    ============================================================ */
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+
+    /* ============================================================
+       ABOUT
+    ============================================================ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-text {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--ink);
+      font-weight: 300;
+    }
+
+    .about-text p + p { margin-top: 1.1rem; }
+
+    .cred-list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .cred-item {
+      background: var(--bg-callout);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      transition: background 0.3s, border-color 0.3s, transform 0.2s, box-shadow 0.2s;
+      cursor: default;
+    }
+
+    /* Lift on hover */
+    .cred-item:hover {
+      transform: translateX(4px);
+      border-color: var(--accent);
+    }
+
+    .cred-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .cred-value {
+      font-size: 0.88rem;
+      color: var(--ink);
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       HIGHLIGHTS / STATS
+    ============================================================ */
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    .highlight-item {
+      padding: 1.5rem 1.25rem;
+      border-right: 1px solid var(--border);
+      transition: background 0.25s, border-color 0.3s;
+    }
+
+    .highlight-item:last-child { border-right: none; }
+
+    /* Warm wash on hover */
+    .highlight-item:hover { background: var(--bg-callout); }
+
+    .highlight-number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--accent);
+      line-height: 1;
+      display: block;
+      margin-bottom: 0.35rem;
+      /* Each number pops in when it enters the viewport (JS adds .stat-animate) */
+      transition: transform 0.3s ease;
+    }
+
+    .highlight-item:hover .highlight-number {
+      transform: scale(1.08);
+    }
+
+    .highlight-label { font-size: 0.8rem; color: var(--ink-muted); line-height: 1.4; }
+
+    /* ============================================================
+       CARD LIST
+    ============================================================ */
+    .card-list { display: flex; flex-direction: column; }
+
+    .card-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 1rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.3s, background 0.2s, padding-left 0.25s;
+      border-radius: 4px;
+    }
+
+    .card-item:first-child { border-top: 1px solid var(--border); }
+    .card-item-inner { display: flex; flex-direction: column; gap: 0.3rem; }
+
+    .card-tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.4;
+      transition: color 0.2s;
+    }
+
+    .card-meta { font-size: 0.85rem; color: var(--ink-muted); }
+
+    .card-arrow {
+      font-size: 1rem;
+      color: var(--border);
+      align-self: center;
+      transition: color 0.2s, transform 0.25s;
+    }
+
+    /* Slide-indent + arrow slide on hover */
+    a.card-item:hover { padding-left: 0.5rem; }
+    a.card-item:hover .card-arrow { color: var(--accent); transform: translateX(5px); }
+    a.card-item:hover .card-title  { color: var(--accent); }
+
+    /* ============================================================
+       FEATURED CARD
+    ============================================================ */
+    .card-featured {
+      background: var(--bg-callout);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 0.5rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: background 0.3s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+
+    .card-featured:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.07);
+    }
+
+    [data-theme="dark"] .card-featured:hover {
+      box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+    }
+
+    .card-featured:hover .card-title { color: var(--accent); }
+    .card-featured .card-tag { margin-bottom: 0.4rem; display: block; }
+    .card-featured .card-title { font-size: 1.15rem; transition: color 0.2s; }
+    .card-featured .card-meta  { margin-top: 0.4rem; }
+
+    /* ============================================================
+       EVENTS / SPEAKING
+    ============================================================ */
+    .event-list { display: flex; flex-direction: column; }
+
+    .event-item {
+      display: grid;
+      grid-template-columns: 4.5rem 1fr;
+      gap: 1.5rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+      transition: border-color 0.3s, padding-left 0.25s;
+    }
+
+    .event-item:first-child { border-top: 1px solid var(--border); }
+
+    /* Slide-indent on hover */
+    .event-item:hover { padding-left: 0.5rem; }
+
+    .event-date {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--ink-muted);
+      line-height: 1.5;
+      padding-top: 0.15rem;
+    }
+
+    .event-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+      transition: color 0.2s;
+    }
+
+    .event-item:hover .event-title { color: var(--accent); }
+
+    .event-desc  { font-size: 0.875rem; color: var(--ink-muted); }
+
+    .event-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 3px;
+      padding: 0.15rem 0.45rem;
+      margin-right: 0.4rem;
+      vertical-align: middle;
+      transition: background 0.3s;
+    }
+
+    /* ============================================================
+       CONTACT & FOOTER
+    ============================================================ */
+    #contact { padding-bottom: 4rem; }
+
+    .contact-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .contact-heading em { font-style: italic; color: var(--accent); }
+
+    .contact-links { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1.75rem; }
+
+    .contact-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--accent);
+      padding-bottom: 1px;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .contact-links a:hover { color: var(--accent); transform: translateY(-1px); }
+
+    .footer-line {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      transition: border-color 0.3s;
+    }
+
+    /* ============================================================
+       CURSOR DOT  — soft terracotta dot that follows the cursor
+    ============================================================ */
+    #cursor-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.3s, width 0.2s, height 0.2s, background 0.3s;
+    }
+
+    /* Grow when hovering links */
+    body.cursor-on-link #cursor-dot {
+      width: 20px;
+      height: 20px;
+      opacity: 0.25;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 620px) {
+      .nav-links { gap: 1rem; }
+      .nav-links li:nth-child(n+4) { display: none; }
+
+      .highlights { grid-template-columns: 1fr 1fr; }
+      .highlights .highlight-item:nth-child(3) {
+        border-top: 1px solid var(--border);
+        border-right: none;
+        grid-column: span 2;
+      }
+
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .event-item { grid-template-columns: 1fr; gap: 0.2rem; }
+      .event-date { padding-top: 0; }
+
+      /* No cursor dot on touch devices */
+      #cursor-dot { display: none; }
+    }
+
+    /* Respect reduced-motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Soft cursor dot -->
+  <div id="cursor-dot"></div>
+
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <nav>
+    <div class="container">
+      <a href="#hero" class="nav-name">Faith Sodipe</a>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#publications">Writing</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#speaking">Speaking</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       HERO
+       EDIT: Replace "your-photo.jpg" with your image filename.
+  ============================================================ -->
+  <section id="hero">
+    <img
+      src="faith.jpeg"
+      alt="Faith Sodipe"
+      class="hero-photo"
+      onerror="this.style.minHeight='480px'; this.style.opacity='0.1';"
+    />
+    <div class="hero-veil"></div>
+    <div class="hero-text container">
+      <!-- EDIT: Your disciplines -->
+      <p class="hero-eyebrow">Software Engineer &nbsp;·&nbsp; Speaker &nbsp;·&nbsp; Community Builder</p>
+      <h1 class="hero-name"><em>Faith Sodipe</em></h1>
+      <!-- EDIT: Your tagline -->
+      <p class="hero-tagline">
+        I build technology with intention, amplify underrepresented voices in
+        engineering, and make ideas worth sharing.
+      </p>
+      <!-- EDIT: Your real links -->
+      <div class="hero-links">
+        <a href="mailto:faithsodipe@gmail.com">Email me</a>
+        <a href="https://linkedin.com/in/sodipefaith/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://medium.com/@faithsodipe" target="_blank" rel="noopener">Medium</a>
+        <a href="https://github.com/classyk12" target="_blank" rel="noopener">GitHub</a>
+        <a href="#speaking">Book me to speak →</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       HEADLINE METRICS
+       EDIT: Replace numbers and labels with your real achievements.
+  ============================================================ -->
+  <section id="metrics" style="padding-top:3rem; padding-bottom:3rem;">
+    <div class="container">
+      <div class="highlights reveal">
+
+        <!-- EDIT each: number + label -->
+        <div class="highlight-item">
+          <span class="highlight-number" data-target="10" data-suffix="+">8+</span>
+          <span class="highlight-label">Conference &amp; panel appearances</span>
+        </div>
+
+        <div class="highlight-item">
+          <span class="highlight-number" data-target="1000" data-suffix="k+">1k+</span>
+          <span class="highlight-label">Engineers reached through initiatives</span>
+        </div>
+
+        <div class="highlight-item">
+          <span class="highlight-number" data-target="3" data-suffix="">3</span>
+          <span class="highlight-label">Open-source contributions</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       ABOUT
+       EDIT: Bio paragraphs + credentials
+  ============================================================ -->
+  <section id="about">
+    <div class="container">
+      <p class="section-label reveal">About</p>
+      <div class="about-grid">
+
+        <div class="about-text reveal reveal-d1">
+          <!-- EDIT: Your story -->
+          <p>
+            I'm a software engineer with a sharp focus on systems that are both
+            technically rigorous and deeply human-centred. I've spent years at
+            the intersection of product engineering, open-source tooling, and
+            community work in tech.
+          </p>
+          <p>
+            I speak at conferences, mentor emerging engineers, write about the
+            culture and craft of software, and run initiatives that bring more
+            people into the rooms where decisions are made.
+          </p>
+          <p>
+            I believe the best technology is built by people who care about
+            the craft, about the user, and about each other.
+          </p>
+        </div>
+
+        <!-- EDIT: Your real credentials -->
+        <div class="cred-list reveal reveal-d2">
+          <div class="cred-item">
+            <span class="cred-label">Based in</span>
+            <span class="cred-value">United Kingdom</span>
+          </div>
+          <div class="cred-item">
+            <span class="cred-label">Current role</span>
+            <span class="cred-value">Software Engineer · Bauer Media Outdoor UK</span>
+          </div>
+          <div class="cred-item">
+            <span class="cred-label">Expertise</span>
+            <span class="cred-value">C#/.NET · Flutter · Distributed Systems · Developer Experience</span>
+          </div>
+          <div class="cred-item">
+            <span class="cred-label">Education</span>
+            <span class="cred-value">Msc Cybersecurity · University of Salford</span>
+          </div>
+          <div class="cred-item">
+            <span class="cred-label">Available for</span>
+            <span class="cred-value">Speaking · Mentoring · Collaborations</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       PUBLICATIONS & WRITING
+       EDIT: Add or remove items. Use href="#" if no URL yet.
+  ============================================================ -->
+  <section id="publications">
+    <div class="container">
+      <p class="section-label reveal">Publications &amp; Writing</p>
+      <div class="card-list">
+
+        <a class="card-featured reveal reveal-d1" href="#" target="_blank" rel="noopener">
+          <span class="card-tag">✦ Featured Essay · 2024</span>
+          <span class="card-title">The Quiet Architecture of Trust in Software Teams</span>
+          <span class="card-meta">Published in Increment Magazine</span>
+        </a>
+
+        <a class="card-item reveal reveal-d2" href="#" target="_blank" rel="noopener">
+          <div class="card-item-inner">
+            <span class="card-tag">Article · 2024</span>
+            <span class="card-title">Why Onboarding is an Engineering Problem</span>
+            <span class="card-meta">Personal blog · 12k reads</span>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a class="card-item reveal reveal-d3" href="#" target="_blank" rel="noopener">
+          <div class="card-item-inner">
+            <span class="card-tag">Paper · 2023</span>
+            <span class="card-title">Observability Patterns for Distributed Event Pipelines</span>
+            <span class="card-meta">Conference Proceedings · PyCon UK</span>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a class="card-item reveal reveal-d4" href="#" target="_blank" rel="noopener">
+          <div class="card-item-inner">
+            <span class="card-tag">Guest Post · 2023</span>
+            <span class="card-title">Building in Public Without Burning Out</span>
+            <span class="card-meta">The Pragmatic Engineer</span>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <!-- ADD MORE HERE -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       PROJECTS & WORK
+       EDIT: Showcase your real projects
+  ============================================================ -->
+  <section id="projects">
+    <div class="container">
+      <p class="section-label reveal">Projects &amp; Work</p>
+      <div class="card-list">
+
+        <a class="card-featured reveal reveal-d1" href="#" target="_blank" rel="noopener">
+          <span class="card-tag">✦ Flagship · Open Source · 2024</span>
+          <span class="card-title">Meridian — Lightweight Feature Flag SDK for Python</span>
+          <span class="card-meta">2.3k GitHub stars &nbsp;·&nbsp; Used in production by 40+ teams &nbsp;·&nbsp; MIT licence</span>
+        </a>
+
+        <a class="card-item reveal reveal-d2" href="#" target="_blank" rel="noopener">
+          <div class="card-item-inner">
+            <span class="card-tag">Product · 2023</span>
+            <span class="card-title">Fieldnotes — Structured Journaling for Engineers</span>
+            <span class="card-meta">Built in public &nbsp;·&nbsp; 800+ active users</span>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a class="card-item reveal reveal-d3" href="#" target="_blank" rel="noopener">
+          <div class="card-item-inner">
+            <span class="card-tag">Tooling · 2022</span>
+            <span class="card-title">Relay — Zero-config API mocking for local development</span>
+            <span class="card-meta">Open source &nbsp;·&nbsp; 900+ GitHub stars</span>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <!-- ADD MORE HERE -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SPEAKING & EVENTS
+       EDIT: Add or remove events.
+  ============================================================ -->
+  <section id="speaking">
+    <div class="container">
+      <p class="section-label reveal">Speaking &amp; Events</p>
+      <div class="event-list">
+
+        <!-- EDIT: Copy event-item block to add more -->
+        <div class="event-item reveal reveal-d1">
+          <div class="event-date">Oct<br />2024</div>
+          <div>
+            <p class="event-title"><span class="event-badge">Keynote</span>How to Build for Trust at Scale</p>
+            <p class="event-desc">LeadDev London 2024 &nbsp;·&nbsp; London, UK</p>
+          </div>
+        </div>
+
+        <div class="event-item reveal reveal-d2">
+          <div class="event-date">Jun<br />2024</div>
+          <div>
+            <p class="event-title"><span class="event-badge">Panel</span>Diversity in Engineering Leadership</p>
+            <p class="event-desc">Women in Tech Summit &nbsp;·&nbsp; Manchester</p>
+          </div>
+        </div>
+
+        <div class="event-item reveal reveal-d3">
+          <div class="event-date">Mar<br />2024</div>
+          <div>
+            <p class="event-title"><span class="event-badge">Workshop</span>Practical Observability for Python Services</p>
+            <p class="event-desc">PyCon UK &nbsp;·&nbsp; Bristol</p>
+          </div>
+        </div>
+
+        <div class="event-item reveal reveal-d4">
+          <div class="event-date">Nov<br />2023</div>
+          <div>
+            <p class="event-title"><span class="event-badge">Podcast</span>The Future of Open Source Maintenance</p>
+            <p class="event-desc">The Changelog &nbsp;·&nbsp; Episode 512</p>
+          </div>
+        </div>
+
+        <div class="event-item reveal reveal-d5">
+          <div class="event-date">Sep<br />2023</div>
+          <div>
+            <p class="event-title"><span class="event-badge">Talk</span>Building Community as Infrastructure</p>
+            <p class="event-desc">Open Source Summit Europe &nbsp;·&nbsp; Bilbao</p>
+          </div>
+        </div>
+
+        <!-- ADD MORE HERE -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       INITIATIVES & COMMUNITY
+  ============================================================ -->
+  <section id="initiatives">
+    <div class="container">
+      <p class="section-label reveal">Initiatives &amp; Community</p>
+      <div class="card-list">
+
+        <a class="card-featured reveal reveal-d1" href="#" target="_blank" rel="noopener">
+          <span class="card-tag">✦ Community · Ongoing</span>
+          <span class="card-title">TechBridge UK</span>
+          <span class="card-meta">Mentorship programme connecting underrepresented engineers with senior industry mentors &nbsp;·&nbsp; 120+ matches to date</span>
+        </a>
+
+        <a class="card-item reveal reveal-d2" href="#" target="_blank" rel="noopener">
+          <div class="card-item-inner">
+            <span class="card-tag">Newsletter · Ongoing</span>
+            <span class="card-title">The Stack Letter</span>
+            <span class="card-meta">Weekly notes on engineering culture, tooling &amp; craft &nbsp;·&nbsp; 3,200 subscribers</span>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a class="card-item reveal reveal-d3" href="#" target="_blank" rel="noopener">
+          <div class="card-item-inner">
+            <span class="card-tag">Programme · 2023</span>
+            <span class="card-title">100 Engineers — Visibility Campaign for Black Technologists</span>
+            <span class="card-meta">Spotlighted 100 engineers across social media &nbsp;·&nbsp; 500k+ impressions</span>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <!-- ADD MORE HERE -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CONTACT
+       EDIT: Update email and links
+  ============================================================ -->
+  <section id="contact">
+    <div class="container">
+      <p class="section-label reveal">Get in touch</p>
+
+      <h2 class="contact-heading reveal reveal-d1">
+        Let's build something<br /><em>worth remembering.</em>
+      </h2>
+
+      <p class="reveal reveal-d2" style="color:var(--ink-muted); font-size:0.95rem; max-width:440px; line-height:1.8;">
+        Open to speaking invitations, podcast appearances, collaborations,
+        advisory roles, and mentoring conversations. Don't hesitate to reach out.
+      </p>
+
+      <!-- EDIT: Your real contact links -->
+      <div class="contact-links reveal reveal-d3">
+        <a href="mailto:hello@faithsodipe.com">hello@faithsodipe.com</a>
+        <a href="https://linkedin.com/in/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://twitter.com/" target="_blank" rel="noopener">Twitter / X</a>
+        <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+      </div>
+
+      <p class="footer-line reveal reveal-d4">
+        © <span id="year"></span> Faith Sodipe &nbsp;·&nbsp; Designed with intention.
+      </p>
+    </div>
+  </section>
+
+
+  <script>
+    // ============================================================
+    // 1. THEME TOGGLE
+    // ============================================================
+    const root   = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const KEY    = 'fs-theme';
+    const saved  = localStorage.getItem(KEY);
+    const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    root.setAttribute('data-theme', saved || system);
+
+    toggle.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem(KEY, next);
+    });
+
+    // ============================================================
+    // 2. SCROLL-REVEAL  (IntersectionObserver)
+    //    Adds .revealed to .reveal elements when they enter viewport
+    // ============================================================
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target); // animate once
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ============================================================
+    // 3. ANIMATED STAT COUNTER
+    //    Numbers count up when the metrics section scrolls into view
+    // ============================================================
+    const statEls = document.querySelectorAll('.highlight-number[data-target]');
+
+    const countUp = (el) => {
+      const raw    = el.dataset.target;   // e.g. "5000"
+      const suffix = el.dataset.suffix;   // e.g. "k+"
+      const target = parseInt(raw, 10);
+
+      // For large numbers, show abbreviated (5000 → 5k+)
+      const display = suffix.includes('k')
+        ? (n) => Math.round(n / 1000) + suffix
+        : (n) => n + suffix;
+
+      let start = null;
+      const duration = 1200;
+
+      const step = (ts) => {
+        if (!start) start = ts;
+        const progress = Math.min((ts - start) / duration, 1);
+        // Ease-out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = display(Math.round(eased * target));
+        if (progress < 1) requestAnimationFrame(step);
+      };
+
+      requestAnimationFrame(step);
+    };
+
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          countUp(entry.target);
+          statObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    statEls.forEach(el => statObserver.observe(el));
+
+    // ============================================================
+    // 4. SOFT CURSOR DOT
+    //    Small terracotta dot that follows the mouse; grows on links
+    // ============================================================
+    const dot = document.getElementById('cursor-dot');
+    let mx = 0, my = 0, cx = 0, cy = 0;
+    let rafId;
+
+    document.addEventListener('mousemove', (e) => {
+      mx = e.clientX;
+      my = e.clientY;
+      dot.style.opacity = '0.55';
+    });
+
+    document.addEventListener('mouseleave', () => {
+      dot.style.opacity = '0';
+    });
+
+    // Smooth follow via lerp
+    const lerp = (a, b, t) => a + (b - a) * t;
+
+    const animateDot = () => {
+      cx = lerp(cx, mx, 0.18);
+      cy = lerp(cy, my, 0.18);
+      dot.style.left = cx + 'px';
+      dot.style.top  = cy + 'px';
+      rafId = requestAnimationFrame(animateDot);
+    };
+
+    animateDot();
+
+    // Grow dot when hovering interactive elements
+    const interactive = 'a, button, .cred-item, .card-item, .card-featured, .event-item';
+    document.querySelectorAll(interactive).forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-on-link'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-on-link'));
+    });
+
+    // ============================================================
+    // 5. COPYRIGHT YEAR
+    // ============================================================
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
