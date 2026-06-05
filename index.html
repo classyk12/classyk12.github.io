@@ -3,7 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Faith Sodipe</title>
+    <title>Faith Sodipe | Software Engineer, Speaker, and Community Builder</title>
+    <meta name="description" content="Faith Sodipe is a software engineer, speaker, and community builder focused on engineering, cybersecurity, and inclusive technology leadership." />
+    <meta name="keywords" content="Faith Sodipe, software engineer, cybersecurity, speaker, community builder, UK engineer, Faith Sodipe portfolio" />
+    <meta name="author" content="Faith Sodipe" />
+    <meta property="og:title" content="Faith Sodipe | Software Engineer, Speaker, and Community Builder" />
+    <meta property="og:image" content="https://classyk12.github.io/faith4.jpeg" />
+    <meta property="og:site_name" content="Faith Sodipe" />
+    <meta property="og:description" content="Explore Faith Sodipe’s writing, speaking, projects, and contact details in one SEO-ready multi-page portfolio." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://classyk12.github.io/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Faith Sodipe | Software Engineer, Speaker, and Community Builder" />
+    <meta name="twitter:description" content="Explore Faith Sodipe’s writing, speaking, projects, and contact details in one SEO-ready multi-page portfolio." />
+    <meta name="twitter:image" content="https://classyk12.github.io/faith4.jpeg" />
+    <link rel="canonical" href="https://classyk12.github.io/" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -115,10 +129,10 @@
         }
       }
 
-      /* Subtle scale-in for the hero photo (gentle Ken Burns feel) */
+      /* Stronger zoom animation, while keeping the final position the same */
       @keyframes heroScale {
         from {
-          transform: scale(1.04);
+          transform: scale(1.08);
         }
         to {
           transform: scale(1);
@@ -318,7 +332,7 @@
         width: 100%;
         height: clamp(420px, 70vh, 620px);
         object-fit: cover;
-        object-position: center 15%;
+        object-position: center 30%;
         display: block;
         background: linear-gradient(
           160deg,
@@ -915,6 +929,21 @@
         }
       }
     </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Faith Sodipe",
+        "jobTitle": "Software Engineer, Speaker, Community Builder",
+        "url": "https://classyk12.github.io/",
+        "sameAs": [
+          "https://www.linkedin.com/in/sodipefaith/",
+          "https://github.com/classyk12",
+          "https://medium.com/@faithsodipe"
+        ],
+        "description": "Faith Sodipe is a software engineer and speaker focused on engineering, cybersecurity, and inclusive technology leadership."
+      }
+    </script>
   </head>
   <body>
     <!-- Soft cursor dot -->
@@ -928,12 +957,11 @@
         <a href="#hero" class="nav-name">Faith Sodipe</a>
 
         <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#publications">Writing</a></li>
-          <li><a href="#speaking">Speaking</a></li>
-          <li><a href="#media">Media</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="writing.html">Writing</a></li>
+          <li><a href="speaking.html">Speaking</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
 
         <button
@@ -981,11 +1009,11 @@
   ============================================================ -->
     <section id="hero">
       <img
-        src="faith.jpeg"
+        src="faith4.jpeg"
         alt="Faith Sodipe"
         class="hero-photo"
         onerror="
-          this.style.minHeight = '480px';
+          this.style.minHeight = '600px';
           this.style.opacity = '0.1';
         "
       />
@@ -1004,6 +1032,10 @@
         </p>
         <!-- EDIT: Your real links -->
         <div class="hero-links">
+          <a href="about.html">About Faith</a>
+          <a href="writing.html">Writing</a>
+          <a href="speaking.html">Speaking</a>
+          <a href="contact.html">Contact</a>
           <a href="mailto:faithsodipe@gmail.com">Email me</a>
           <a
             href="https://linkedin.com/in/sodipefaith/"
@@ -1662,8 +1694,7 @@
         </div>
 
         <p class="footer-line reveal reveal-d4">
-          © <span id="year"></span> Faith Sodipe &nbsp;·&nbsp; Designed with
-          intention.
+          © <span id="year"></span> Faith Sodipe — Software Engineer | Researcher | Community Builder
         </p>
       </div>
     </section>
