@@ -832,6 +832,53 @@ a.event-item {
     transform: translateY(-1px);
 }
 
+/* ############ Featured Media Card ############ */
+.featured {
+    padding: 20rem 0;
+    border-top: 20px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.featured-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+}
+
+.featured h2 {
+    margin-bottom: 0.5rem;
+}
+
+.featured-description {
+    max-width: 650px;
+    margin: 0 auto 3rem;
+    color: var(--muted);
+}
+
+.featured-logos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+    align-items: center;
+}
+
+.featured-logos img {
+    width: 100%;
+    max-height: 55px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.25s ease;
+}
+
+.featured-logos img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+
 .footer-line {
     margin-top: 4rem;
     padding-top: 1.5rem;
