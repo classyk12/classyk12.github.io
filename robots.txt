@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://classyk12.github.io/sitemap.xml
