@@ -795,60 +795,6 @@
       }
 
       /* ============================================================
-       CONTACT & FOOTER
-    ============================================================ */
-      #contact {
-        padding-bottom: 4rem;
-      }
-
-      .contact-heading {
-        font-family: var(--font-display);
-        font-size: clamp(1.75rem, 4vw, 2.5rem);
-        font-weight: 300;
-        line-height: 1.2;
-        color: var(--ink);
-        margin-bottom: 1rem;
-      }
-
-      .contact-heading em {
-        font-style: italic;
-        color: var(--accent);
-      }
-
-      .contact-links {
-        display: flex;
-        gap: 1.5rem;
-        flex-wrap: wrap;
-        margin-top: 1.75rem;
-      }
-
-      .contact-links a {
-        font-size: 0.88rem;
-        font-weight: 500;
-        color: var(--ink);
-        text-decoration: none;
-        border-bottom: 1.5px solid var(--accent);
-        padding-bottom: 1px;
-        transition:
-          color 0.2s,
-          transform 0.2s;
-      }
-
-      .contact-links a:hover {
-        color: var(--accent);
-        transform: translateY(-1px);
-      }
-
-      .footer-line {
-        margin-top: 4rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid var(--border);
-        font-size: 0.78rem;
-        color: var(--ink-muted);
-        transition: border-color 0.3s;
-      }
-
-      /* ============================================================
        CURSOR DOT  — soft terracotta dot that follows the cursor
     ============================================================ */
       #cursor-dot {
@@ -958,8 +904,9 @@
 
         <ul class="nav-links">
           <li><a href="about.html">About</a></li>
-          <li><a href="writing.html">Writing</a></li>
+          <li><a href="writing.html">Publications</a></li>
           <li><a href="speaking.html">Speaking</a></li>
+          <li><a href="media.html">Media</a></li>
           <li><a href="projects.html">Projects</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -1003,10 +950,6 @@
       </div>
     </nav>
 
-    <!-- ============================================================
-       HERO
-       EDIT: Replace "your-photo.jpg" with your image filename.
-  ============================================================ -->
     <section id="hero">
       <img
         src="faith4.jpeg"
@@ -1033,25 +976,11 @@
         <!-- EDIT: Your real links -->
         <div class="hero-links">
           <a href="about.html">About Faith</a>
-          <a href="writing.html">Writing</a>
+          <a href="writing.html">Publications</a>
           <a href="speaking.html">Speaking</a>
+          <a href="media.html">Media & Recognition</a>
+          <a href="projects.html">Projects</a>
           <a href="contact.html">Contact</a>
-          <a href="mailto:faithsodipe@gmail.com">Email me</a>
-          <a
-            href="https://linkedin.com/in/sodipefaith/"
-            target="_blank"
-            rel="noopener"
-            >LinkedIn</a
-          >
-          <a
-            href="https://medium.com/@faithsodipe"
-            target="_blank"
-            rel="noopener"
-            >Medium</a
-          >
-          <a href="https://github.com/classyk12" target="_blank" rel="noopener"
-            >GitHub</a
-          >
         </div>
       </div>
     </section>
@@ -1060,7 +989,7 @@
        HEADLINE METRICS
        EDIT: Replace numbers and labels with your real achievements.
   ============================================================ -->
-    <section id="metrics" style="padding-top: 3rem; padding-bottom: 3rem">
+    <section id="metrics" style="padding-top: 3rem; padding-bottom: 0rem">
       <div class="container">
         <div class="highlights reveal">
           <!-- EDIT each: number + label -->
@@ -1088,400 +1017,6 @@
             >
             <span class="highlight-label">Open-source contributions</span>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-       ABOUT
-       EDIT: Bio paragraphs + credentials
-  ============================================================ -->
-    <section id="about">
-      <div class="container">
-        <p class="section-label reveal">About</p>
-        <div class="about-grid">
-          <div class="about-text reveal reveal-d1">
-            <!-- EDIT: Your story -->
-            <p>
-              I'm a software engineer with a sharp focus on systems that are
-              both technically rigorous and deeply human-centred. I've spent
-              years at the intersection of product engineering, open-source
-              tooling, and community work in tech.
-            </p>
-            <p>
-              I speak at conferences, mentor emerging engineers, write about the
-              culture and craft of software, and run initiatives that bring more
-              people into the rooms where decisions are made.
-            </p>
-            <p>
-              I believe the best technology is built by people who care about
-              the craft, about the user, and about each other.
-            </p>
-          </div>
-
-          <!-- EDIT: Your real credentials -->
-          <div class="cred-list reveal reveal-d2">
-            <div class="cred-item">
-              <span class="cred-label">Based in</span>
-              <span class="cred-value">United Kingdom</span>
-            </div>
-            <div class="cred-item">
-              <span class="cred-label">Current role</span>
-              <span class="cred-value"
-                >Software Engineer · Bauer Media Outdoor UK</span
-              >
-            </div>
-            <div class="cred-item">
-              <span class="cred-label">Expertise</span>
-              <span class="cred-value"
-                >C#/.NET · Flutter · Distributed Systems · Developer
-                Experience</span
-              >
-            </div>
-            <div class="cred-item">
-              <span class="cred-label">Education</span>
-              <span class="cred-value"
-                >Msc Cybersecurity · University of Salford</span
-              >
-            </div>
-            <div class="cred-item">
-              <span class="cred-label">Available for</span>
-              <span class="cred-value"
-                >Speaking · Mentoring · Collaborations</span
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-       PUBLICATIONS & WRITING
-       EDIT: Add or remove items. Use href="#" if no URL yet.
-  ============================================================ -->
-    <section id="publications" data-collapsible>
-      <div class="container">
-        <div class="section-header reveal reveal-d1">
-          <p class="section-label">Publications &amp; Writing</p>
-          <button class="collapse-toggle" type="button" aria-expanded="true">Hide</button>
-        </div>
-        <div class="section-body">
-          <div class="card-list">
-          <a
-            class="card-featured reveal reveal-d1"
-            href="https://zenodo.org/records/19671889"
-            target="_blank"
-            rel="noopener"
-          >
-            <span class="card-tag">✦ Preprint Research Paper · 2026</span>
-            <span class="card-title"
-              >A Unified Multimodal Deep Learning Architecture for Cross-Modal
-              Understanding and Decision Support</span
-            >
-            <span class="card-meta">Published on Zenodo</span>
-          </a>
-
-          <a
-            class="card-item reveal reveal-d4"
-            href="https://bizweekly.com/the-role-of-cross-platform-mobile-development-in-expanding-tech-access-in-africa/"
-            target="_blank"
-            rel="noopener"
-          >
-            <div class="card-item-inner">
-              <span class="card-tag">Article · 2025</span>
-              <span class="card-title"
-                >The Role of Cross-Platform Mobile Development in Expanding Tech
-                Access in Africa</span
-              >
-              <span class="card-meta">Featured Article · Biz Weekly</span>
-            </div>
-            <span class="card-arrow">→</span>
-          </a>
-
-          <a
-            class="card-item reveal reveal-d2"
-            href="https://techpression.com/striking-the-balance-managing-innovation-and-security-in-enterprise-software-development/"
-            target="_blank"
-            rel="noopener"
-          >
-            <div class="card-item-inner">
-              <span class="card-tag">Article · 2025</span>
-              <span class="card-title"
-                >Striking the Balance: Managing innovation and security in
-                enterprise software development</span
-              >
-              <span class="card-meta">Editor's Pick · Techpression</span>
-            </div>
-            <span class="card-arrow">→</span>
-          </a>
-
-          <a
-            class="card-item reveal reveal-d2"
-            href="https://independent.ng/integrating-security-into-software-development-essential-cybersecurity-strategies-for-engineers/"
-            target="_blank"
-            rel="noopener"
-          >
-            <div class="card-item-inner">
-              <span class="card-tag">Article · 2025</span>
-              <span class="card-title"
-                >Integrating Security Into Software Development: Essential
-                Cybersecurity Strategies For Engineers</span
-              >
-              <span class="card-meta">Featured Article · Independent.ng</span>
-            </div>
-            <span class="card-arrow">→</span>
-          </a>
-
-          <a
-            class="card-item reveal reveal-d3"
-            href="https://www.vanguardngr.com/2025/03/scaling-applications-with-net-core-a-guide-to-building-high-performance-backend-systems/"
-            target="_blank"
-            rel="noopener"
-          >
-            <div class="card-item-inner">
-              <span class="card-tag">Article · 2025</span>
-              <span class="card-title"
-                >Scaling applications with .NET Core: A guide to building
-                high-performance backend systems</span
-              >
-              <span class="card-meta">Featured Article · Vanguardngr</span>
-            </div>
-            <span class="card-arrow">→</span>
-          </a>
-
-          <a
-            class="card-item reveal reveal-d4"
-            href="https://dailytimesng.com/beyond-technical-skills-why-soft-skills-matter-in-the-tech-industry/"
-            target="_blank"
-            rel="noopener"
-          >
-            <div class="card-item-inner">
-              <span class="card-tag">Article · 2025</span>
-              <span class="card-title"
-                >Beyond Technical Skills: Why Soft Skills Matter in the Tech
-                Industry</span
-              >
-              <span class="card-meta">Featured Article · The Daily Times</span>
-            </div>
-            <span class="card-arrow">→</span>
-          </a>
-
-          <a
-            class="card-item reveal reveal-d4"
-            href="https://techeconomy.ng/cyber-hygiene-for-developers-daily-security-practices-to-prevent-breaches/ "
-            target="_blank"
-            rel="noopener"
-          >
-            <div class="card-item-inner">
-              <span class="card-tag">Guest Post · 2025</span>
-              <span class="card-title"
-                >Cyber Hygiene for Developers: Daily Security Practices to
-                Prevent Breaches</span
-              >
-              <span class="card-meta">Featured Article · Tech Economy</span>
-            </div>
-            <span class="card-arrow">→</span>
-          </a>
-
-          <!-- ADD MORE HERE -->
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-       SPEAKING & EVENTS
-       EDIT: Add or remove events.
-  ============================================================ -->
-    <section id="speaking" data-collapsible>
-      <div class="container">
-        <div class="section-header reveal reveal-d1">
-          <p class="section-label">Speaking &amp; Events</p>
-          <button class="collapse-toggle" type="button" aria-expanded="true">Hide</button>
-        </div>
-        <div class="section-body">
-          <div class="event-list">
-          <!-- EDIT: Copy event-item block to add more -->
-          <a
-            class="event-item reveal reveal-d1"
-            href="https://www.developersupnorth.co.uk/#speakers"
-          >
-            <div class="event-date">June<br />2026</div>
-            <div>
-              <p class="event-title">
-                <span class="event-badge">Speaking</span>Smarter features,
-                Slower Apps: Lessons from Integrating AI in the Frontend
-              </p>
-              <p class="event-desc">DevelopersUpNorth &nbsp;·&nbsp; Hull, UK</p>
-            </div>
-          </a>
-
-          <a
-            class="event-item reveal reveal-d2"
-            href="https://multimodalai.github.io/multimodalai26/accepted-abstracts/"
-          >
-            <div class="event-date">Jun<br />2026</div>
-            <div>
-              <p class="event-title">
-                <span class="event-badge">Research Presentation</span>A Unified
-                Multimodal Deep Learning Architecture for Cross-Modal
-                Understanding and Decision Support
-              </p>
-              <p class="event-desc">MultiModalAI'26 &nbsp;·&nbsp; London, UK</p>
-            </div>
-          </a>
-
-          <a class="event-item reveal reveal-d3" href="#">
-            <div class="event-date">May<br />2026</div>
-            <div>
-              <p class="event-title">
-                <span class="event-badge">Webinar</span> Designing for High
-                Availability Without OverEngineering
-              </p>
-              <p class="event-desc">TechStorm &nbsp;·&nbsp; Virtual, Ghana</p>
-            </div>
-          </a>
-
-          <a
-            class="event-item reveal reveal-d3"
-            href="https://www.youtube.com/live/Ar82z4wnyvc?t=271s"
-          >
-            <div class="event-date">April<br />2026</div>
-            <div>
-              <p class="event-title">
-                <span class="event-badge">Talk</span> Self Healing Deployment
-              </p>
-              <p class="event-desc">.NET Meetup &nbsp;·&nbsp; Liverpool</p>
-            </div>
-          </a>
-
-          <a
-            class="event-item reveal reveal-d3"
-            href="https://www.linkedin.com/posts/sodipefaith_great-speaking-at-pydatamcr-last-week-activity-7451913833931182080-dDW8?utm_source=share&utm_medium=member_desktop&rcm=ACoAACTm7LgBRdm5N-Uq3PB72s0SX5PZTVay6XU"
-          >
-            <div class="event-date">April<br />2026</div>
-            <div>
-              <p class="event-title">
-                <span class="event-badge">Talk</span>From Reactive to Resilient:
-                Using AI/ML to build Self Healing Deployment Pipelines
-              </p>
-              <p class="event-desc">PyDataMCR &nbsp;·&nbsp; Manchester</p>
-            </div>
-          </a>
-
-          <a
-            class="event-item reveal reveal-d3"
-            href="https://www.youtube.com/watch?v=yjTifGzlwaA"
-          >
-            <div class="event-date">Apr<br />2025</div>
-            <div>
-              <p class="event-title">
-                <span class="event-badge">Webinar</span> Cybersecurity
-                Essentials: Building Stronger Networks and Communities
-              </p>
-              <p class="event-desc">
-                TechEconomy Cybersecurity Webinar &nbsp;·&nbsp; TechEconomy NG
-              </p>
-            </div>
-          </a>
-
-          <!-- ADD MORE HERE -->
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-       MEDIA APPEARANCES & MENTIONS
-       EDIT: Add or remove events.
-  ============================================================ -->
-    <section id="media" data-collapsible>
-      <div class="container">
-        <div class="section-header reveal reveal-d1">
-          <p class="section-label">Media Mentions, Appearances & Awards</p>
-          <button class="collapse-toggle" type="button" aria-expanded="true">Hide</button>
-        </div>
-        <div class="section-body">
-          <div class="event-list">
-          <!-- EDIT: Copy event-item block to add more -->
-          <a
-            class="event-item reveal reveal-d3"
-            href="https://glostarep.com/beyond-code-how-faith-is-combining-fintech-ai-and-community-impact/"
-          >
-            <div class="event-date">May<br />2026</div>
-            <div>
-              <p class="event-title">
-                <span class="event-badge">Media Mention</span> Beyond Code: How
-                Faith Is Combining Fintech, AI, and Community Impact
-              </p>
-              <p class="event-desc">
-                Glostarep Highlight &nbsp;·&nbsp; Glostarep
-              </p>
-            </div>
-          </a>
-
-          <a
-            class="event-item reveal reveal-d3"
-            href="https://www.linkedin.com/posts/nigeriagloballeaders-globalleadersinc-softwareengineering-share-7463498890462420992-OcB3?utm_source=share&utm_medium=member_desktop&rcm=ACoAACTm7LgBRdm5N-Uq3PB72s0SX5PZTVay6XU"
-          >
-            <div class="event-date">May<br />2026</div>
-            <div>
-              <p class="event-title">
-                <span class="event-badge">Media Mention</span>Recognized as a
-                Nigeria Tech Global Leader
-              </p>
-              <p class="event-desc">
-                Nigeria Global Leaders &nbsp;·&nbsp; Nigeria Global Leaders
-              </p>
-            </div>
-          </a>
-
-          <a
-            class="event-item reveal reveal-d5"
-            href="https://crestafrica.com/crest-awards-2025-winners/"
-          >
-            <div class="event-date">Dec<br />2025</div>
-            <div>
-              <p class="event-title">
-                <span class="event-badge">Award & Recognition</span>Recognition
-                as a Tech Impact Leader 2025
-              </p>
-              <p class="event-desc">
-                Tech Power List 2025 &nbsp;·&nbsp; Crest Africa Awards
-              </p>
-            </div>
-          </a>
-
-          <a
-            class="event-item reveal reveal-d2"
-            href="https://www.youtube.com/watch?v=nmBGy-G7JB0"
-          >
-            <div class="event-date">July<br />2025</div>
-            <div>
-              <p class="event-title">
-                <span class="event-badge">Guest Invite</span>Staying Safe
-                Online: Self Defense against Cybercrime
-              </p>
-              <p class="event-desc">
-                Business Incorporated &nbsp;·&nbsp; ChannelsTV
-              </p>
-            </div>
-          </a>
-
-          <a
-            class="event-item reveal reveal-d1"
-            href="https://youtu.be/L1obMQ432jc?si=ohUbPYUNsrXYriYr"
-          >
-            <div class="event-date">April<br />2025</div>
-            <div>
-              <p class="event-title">
-                <span class="event-badge">Guest Invite</span>Breaking Into Tech:
-                Building Career In Software Engineering, Cybersecurity And
-                Others
-              </p>
-              <p class="event-desc">The Breakfast Show &nbsp;·&nbsp; TVC</p>
-            </div>
-          </a>
-
-          <!-- ADD MORE HERE -->
         </div>
       </div>
     </section>
@@ -1532,111 +1067,17 @@
             <span class="card-arrow">→</span>
           </a>
 
-          <!-- ADD MORE HERE -->
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-           PROJECTS & WORK
-           EDIT: Showcase your real projects
-      ============================================================ -->
-    <section id="projects" data-collapsible>
-      <div class="container">
-        <div class="section-header reveal reveal-d1">
-          <p class="section-label">Projects &amp; Work</p>
-          <button class="collapse-toggle" type="button" aria-expanded="true">Hide</button>
-        </div>
-        <div class="section-body">
-          <div class="card-list">
-          <!-- <a
-            class="card-featured reveal reveal-d1"
+          <a
+            class="card-item reveal reveal-d2"
             href="#"
             target="_blank"
             rel="noopener"
           >
-            <span class="card-tag">✦ Flagship · Open Source · 2024</span>
-            <span class="card-title"
-              >Meridian — Lightweight Feature Flag SDK for Python</span
-            >
-            <span class="card-meta"
-              >2.3k GitHub stars &nbsp;·&nbsp; Used in production by 40+ teams
-              &nbsp;·&nbsp; MIT licence</span
-            >
-          </a> -->
-
-          <a
-            class="card-item reveal reveal-d2"
-            href="https://www.crossborda.io/#/"
-            target="_blank"
-            rel="noopener"
-          >
             <div class="card-item-inner">
-              <span class="card-tag">Product · 2023</span>
-              <span class="card-title"
-                >Crossborda - A smarter way for African SMEs to send money</span
-              >
-              <span class="card-meta"
-                >Vigipay &nbsp;·&nbsp; 1k+ active users&nbsp; · &nbsp;Over $100k
-                Transacted</span
-              >
-            </div>
-            <span class="card-arrow">→</span>
-          </a>
-
-          <a
-            class="card-item reveal reveal-d2"
-            href="https://play.google.com/store/apps/details?id=com.cardinalstone.csalpha&hl=en-US&pli=1"
-            target="_blank"
-            rel="noopener"
-          >
-            <div class="card-item-inner">
-              <span class="card-tag">Product · 2023</span>
-              <span class="card-title"
-                >CS Alpha - Buy, Sell, manage your stocks and shares portfolio
-                seamlessly</span
-              >
-              <span class="card-meta"
-                >Cardinalstone &nbsp;·&nbsp; 3k+ active users&nbsp; · &nbsp;10k+
-                Downloads</span
-              >
-            </div>
-            <span class="card-arrow">→</span>
-          </a>
-
-          <a
-            class="card-item reveal reveal-d2"
-            href="https://play.google.com/store/apps/details?id=com.makvid.smartdeals"
-            target="_blank"
-            rel="noopener"
-          >
-            <div class="card-item-inner">
-              <span class="card-tag">Product · 2023</span>
-              <span class="card-title"
-                >SmartDeals App — Your friendly discount aggregator app</span
-              >
-              <span class="card-meta"
-                >Makvid Integrated Solutions &nbsp;·&nbsp; 8k+ active users
-                ·&nbsp; 5k+ Downloads
-              </span>
-            </div>
-            <span class="card-arrow">→</span>
-          </a>
-
-          <a
-            class="card-item reveal reveal-d2"
-            href="https://play.google.com/store/apps/details?id=com.firstbank.lit&hl=en-US"
-            target="_blank"
-            rel="noopener"
-          >
-            <div class="card-item-inner">
-              <span class="card-tag">Product · 2021</span>
-              <span class="card-title"
-                >LIT by FirstBank — FirstBank's Digital Mobile App</span
-              >
-              <span class="card-meta"
-                >First Bank Plc &nbsp;·&nbsp; 500k+ active users ·&nbsp; 100k+
-                Downloads
+              <span class="card-tag">STEM Ambassador · Ongoing</span>
+              <span class="card-title">STEM Learning UK</span>
+              <span class="card-meta">
+              Speaking, coaching, mentoring, judging tech events and supporting students and educators in STEM &nbsp;
               </span>
             </div>
             <span class="card-arrow">→</span>
@@ -1644,58 +1085,6 @@
 
           <!-- ADD MORE HERE -->
         </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-       CONTACT
-       EDIT: Update email and links
-  ============================================================ -->
-    <section id="contact">
-      <div class="container">
-        <p class="section-label reveal">Get in touch</p>
-
-        <h2 class="contact-heading reveal reveal-d1">
-          Let's build something<br /><em>worth remembering.</em>
-        </h2>
-
-        <p
-          class="reveal reveal-d2"
-          style="
-            color: var(--ink-muted);
-            font-size: 0.95rem;
-            max-width: 440px;
-            line-height: 1.8;
-          "
-        >
-          Open to speaking invitations, podcast appearances, collaborations,
-          advisory roles, and mentoring conversations. Don't hesitate to reach
-          out.
-        </p>
-
-        <!-- EDIT: Your real contact links -->
-        <div class="contact-links reveal reveal-d3">
-          <a href="mailto:faithsodipe@gmail.com">hello@faithsodipe.com</a>
-          <a
-            href="https://linkedin.com/in/sodipefaith/"
-            target="_blank"
-            rel="noopener"
-            >LinkedIn</a
-          >
-          <a
-            href="https://medium.com/@faithsodipe"
-            target="_blank"
-            rel="noopener"
-            >Medium</a
-          >
-          <a href="https://github.com/classyk12" target="_blank" rel="noopener"
-            >GitHub</a
-          >
-        </div>
-
-        <p class="footer-line reveal reveal-d4">
-          © <span id="year"></span> Faith Sodipe — Software Engineer | Researcher | Community Builder
-        </p>
       </div>
     </section>
 
