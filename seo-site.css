@@ -11,6 +11,9 @@
     --surface-2: #f3ede3;
     --text: #1f1b16;
     --muted: #5f564d;
+    --ink: #1f1b16;
+    --ink-muted: #5f564d;
+    --bg-callout: #f3ede3;
     --accent: #b05e3a;
     --accent-light: #f5eae4;
     --border: #e4dac8;
@@ -25,6 +28,9 @@
     --surface-2: #2a1a10;
     --text: #f0ebe1;
     --muted: #9a8f82;
+    --ink: #f0ebe1;
+    --ink-muted: #9a8f82;
+    --bg-callout: #201c14;
     --accent: #d4825a;
     --accent-light: #2a1a10;
     --border: #2e2820;
@@ -787,6 +793,95 @@ a.event-item {
     transition: background 0.3s;
 }
 
+.media-kit-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.9fr);
+    gap: 1rem;
+    align-items: stretch;
+}
+
+.media-kit-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .04);
+}
+
+.media-kit-card h2,
+.media-kit-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.6rem;
+}
+
+.media-kit-card p {
+    margin-top: 0;
+}
+
+.media-kit-list,
+.media-kit-facts {
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.media-kit-list li,
+.media-kit-facts li {
+    padding: 0.7rem 0;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+}
+
+.media-kit-list li:first-child,
+.media-kit-facts li:first-child {
+    border-top: 0;
+    padding-top: 0;
+}
+
+.media-kit-facts strong {
+    color: var(--text);
+}
+
+.media-kit-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+.media-kit-actions .button.secondary {
+    border-color: var(--border);
+}
+
+.media-kit-downloads {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.media-kit-download {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    align-items: center;
+    padding: 0.95rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface-2);
+    color: var(--text);
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.media-kit-download:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+}
+
+.media-kit-download span {
+    color: var(--muted);
+    font-size: 0.88rem;
+}
+
 /* ============================================================
            CONTACT & FOOTER
         ============================================================ */
@@ -896,6 +991,10 @@ footer {
 }
 
 @media (max-width: 840px) {
+
+    .media-kit-grid {
+        grid-template-columns: 1fr;
+    }
 
     .grid-2,
     .grid-3 {
