@@ -213,6 +213,13 @@ main {
     margin-bottom: 1.25rem;
 }
 
+/* Break the hero out of centered containers for full-width presentation */
+.page-hero-full {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
 .page-hero-banner {
     position: relative;
     overflow: hidden;
@@ -226,8 +233,13 @@ main {
     width: 100%;
     height: clamp(420px, 70vh, 620px);
     object-fit: cover;
-    object-position: center 30%;
+    object-position: center 15%;
     filter: brightness(0.92) contrast(1.04);
+}
+
+/* Keep the About hero portrait framed higher so the face is visible. */
+.about-hero-image {
+    object-position: center 20%;
 }
 
 .page-hero-overlay {
@@ -989,6 +1001,116 @@ footer {
     color: var(--muted);
     font-size: .92rem;
 }
+
+/* #Hero */
+
+#hero {
+    padding: 0;
+    border-top: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-photo {
+    width: 100%;
+    height: clamp(420px, 70vh, 620px);
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+    background: linear-gradient(160deg,
+            var(--accent-light) 0%,
+            var(--border) 100%);
+    filter: brightness(0.88) contrast(1.04);
+    /* Gentle scale-in on load */
+    animation:
+        fadeIn 0.8s ease both,
+        heroScale 6s ease both;
+}
+
+.hero-veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            transparent 30%,
+            rgba(0, 0, 0, 0.15) 55%,
+            rgba(0, 0, 0, 0.65) 100%);
+    pointer-events: none;
+}
+
+.hero-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2.5rem 1.5rem 2.75rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 0.6rem;
+    animation: fadeUp 0.7s 0.3s ease both;
+}
+
+.hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 7vw, 4rem);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    color: #fff;
+    margin-bottom: 1rem;
+    animation: fadeUp 0.7s 0.5s ease both;
+}
+
+.hero-name em {
+    font-style: italic;
+    color: #f4c5a8;
+}
+
+.hero-tagline {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 460px;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.7s 0.7s ease both;
+}
+
+.hero-links {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    animation: fadeUp 0.7s 0.9s ease both;
+}
+
+.hero-links a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.4);
+    padding-bottom: 1px;
+    transition:
+        border-color 0.2s,
+        color 0.2s,
+        transform 0.2s;
+}
+
+.hero-links a:hover {
+    color: #fff;
+    border-color: #fff;
+    transform: translateY(-1px);
+}
+
+/* #Hero */
+
 
 @media (max-width: 840px) {
 
