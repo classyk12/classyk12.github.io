@@ -77,4 +77,30 @@ if (dot)
     animate();
 }
 
+// Enable Hide/Show toggles on sections marked as collapsible.
+document.querySelectorAll('section[data-collapsible]').forEach((section) =>
+{
+    const button = section.querySelector('.collapse-toggle');
+    const body = section.querySelector('.section-body');
+    if (!button || !body)
+    {
+        return;
+    }
+
+    const setExpanded = (expanded) =>
+    {
+        button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        button.textContent = expanded ? 'Hide' : 'Show';
+        section.classList.toggle('section-collapsed', !expanded);
+    };
+
+    button.addEventListener('click', () =>
+    {
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        setExpanded(!expanded);
+    });
+
+    setExpanded(true);
+});
+
 document.getElementById('year')?.replaceChildren(String(new Date().getFullYear()));
