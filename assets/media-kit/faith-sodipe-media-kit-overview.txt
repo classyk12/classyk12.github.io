@@ -1,0 +1,29 @@
+FAITH SODIPE MEDIA KIT OVERVIEW
+
+Name: Faith Sodipe
+Role: Software Engineer, Speaker, and Community Builder
+Base: United Kingdom
+Primary Contact: faithsodipe@gmail.com
+LinkedIn: https://linkedin.com/in/sodipefaith/
+GitHub: https://github.com/classyk12
+Medium: https://medium.com/@faithsodipe
+Website: https://faithsodipe.dev/
+
+Summary:
+Faith Sodipe is a UK-based software engineer, cybersecurity advocate, speaker, and community builder. His work sits at the intersection of resilient product engineering, AI, developer experience, and inclusive technology leadership.
+
+Available For:
+- Conference talks
+- Podcasts and interviews
+- Panels and fireside chats
+- Mentoring and advisory conversations
+- Community and ecosystem collaborations
+
+Core Topics:
+- Software engineering
+- Cybersecurity
+- AI in product development
+- Developer experience
+- Distributed systems
+- Community building
+- Inclusive technology leadership

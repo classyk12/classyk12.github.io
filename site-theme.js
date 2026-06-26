@@ -30,10 +30,13 @@ const revealObserver = new IntersectionObserver((entries) =>
 document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
 const currentPage = window.location.pathname.split('/').filter(Boolean).pop() || 'index.html';
+const activePage = currentPage === 'media-kit.html' ? 'media.html' : currentPage;
 document.querySelectorAll('.nav-links a').forEach((link) =>
 {
     const href = link.getAttribute('href') || '';
-    const matches = href === currentPage || (href === 'index.html' && currentPage === 'index.html') || (href === '#hero' && currentPage === 'index.html');
+    const resolvedPath = new URL(href, window.location.href).pathname;
+    const linkPage = resolvedPath.split('/').filter(Boolean).pop() || 'index.html';
+    const matches = linkPage === activePage || (href === '#hero' && activePage === 'index.html');
     if (matches)
     {
         link.classList.add('active');
@@ -73,5 +76,31 @@ if (dot)
     });
     animate();
 }
+
+// Enable Hide/Show toggles on sections marked as collapsible.
+document.querySelectorAll('section[data-collapsible]').forEach((section) =>
+{
+    const button = section.querySelector('.collapse-toggle');
+    const body = section.querySelector('.section-body');
+    if (!button || !body)
+    {
+        return;
+    }
+
+    const setExpanded = (expanded) =>
+    {
+        button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        button.textContent = expanded ? 'Hide' : 'Show';
+        section.classList.toggle('section-collapsed', !expanded);
+    };
+
+    button.addEventListener('click', () =>
+    {
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        setExpanded(!expanded);
+    });
+
+    setExpanded(true);
+});
 
 document.getElementById('year')?.replaceChildren(String(new Date().getFullYear()));
