@@ -895,6 +895,83 @@ a.event-item {
 }
 
 /* ============================================================
+           EVENT DETAIL PAGES
+        ============================================================ */
+.event-detail-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.8fr);
+    gap: 1rem;
+    align-items: start;
+}
+
+.event-detail-section {
+    display: grid;
+    gap: 1rem;
+}
+
+.event-meta-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.event-meta-list li {
+    border-top: 1px solid var(--border);
+    padding-top: 0.75rem;
+    color: var(--muted);
+}
+
+.event-meta-list li:first-child {
+    border-top: 0;
+    padding-top: 0;
+}
+
+.event-meta-list strong {
+    color: var(--text);
+}
+
+.event-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.event-gallery-item {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+}
+
+.event-gallery-item img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center 18%;
+}
+
+.event-gallery-item figcaption {
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    padding: 0.45rem 0.6rem 0.55rem;
+}
+
+.event-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.event-nav-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+/* ============================================================
            CONTACT & FOOTER
         ============================================================ */
 #contact {
@@ -1115,6 +1192,14 @@ footer {
 @media (max-width: 840px) {
 
     .media-kit-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .event-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .event-gallery {
         grid-template-columns: 1fr;
     }
 
