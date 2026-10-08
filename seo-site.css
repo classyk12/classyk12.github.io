@@ -535,6 +535,13 @@ a.card-featured {
     line-height: 1.5;
 }
 
+@media (max-width: 840px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
 /* ============================================================
        SECTION LABEL
     ============================================================ */
