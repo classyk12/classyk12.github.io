@@ -160,14 +160,20 @@ body.cursor-on-link #cursor-dot {
 
 .nav-links {
     display: flex;
-    gap: 1.75rem;
-    flex-wrap: wrap;
+    gap: clamp(.5rem, 1.2vw, 1.25rem);
+    align-items: center;
+    flex-wrap: nowrap;
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
+.nav-links li {
+    flex-shrink: 0;
+}
+
 .nav-links a {
+    display: block;
     text-decoration: none;
     color: var(--muted);
     font-size: 0.8rem;
@@ -203,6 +209,30 @@ body.cursor-on-link #cursor-dot {
 
 .nav-links a.active::after {
     width: 100%;
+}
+
+.nav-links a[aria-current="page"] {
+    color: var(--accent);
+    font-weight: 500;
+}
+
+.nav-links a[aria-current="page"]::after {
+    width: 100%;
+}
+
+@media (max-width: 840px) {
+    nav .container {
+        flex-wrap: wrap;
+    }
+
+    .nav-links {
+        order: 3;
+        flex: 0 0 100%;
+        gap: 1rem;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        padding-bottom: .25rem;
+    }
 }
 
 main {
