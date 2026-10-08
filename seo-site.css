@@ -597,6 +597,16 @@ a.card-featured {
     margin: 0;
 }
 
+.speaking-year {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.speaking-year-title {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
 /* ============================================================
            CARD LIST
         ============================================================ */

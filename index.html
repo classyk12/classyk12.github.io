@@ -693,6 +693,86 @@
         border-top: 0;
       }
 
+      .upcoming-section {
+        padding-top: 2.5rem;
+        padding-bottom: 0;
+        border-top: 0;
+      }
+
+      .upcoming-intro {
+        max-width: 680px;
+        margin-bottom: 1.25rem;
+      }
+
+      .upcoming-intro h2 {
+        margin: 0.45rem 0;
+        font-family: var(--font-display);
+        font-size: clamp(1.7rem, 3vw, 2.2rem);
+        font-weight: 300;
+        line-height: 1.2;
+      }
+
+      .upcoming-intro p:last-child {
+        color: var(--ink-muted);
+        font-size: 0.9rem;
+      }
+
+      .upcoming-list {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .upcoming-item {
+        display: grid;
+        grid-template-columns: 8.5rem minmax(0, 1fr);
+        gap: 1.25rem;
+        align-items: center;
+        min-width: 0;
+        padding: 0.85rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .upcoming-date {
+        color: var(--accent);
+        font-size: 0.75rem;
+        font-weight: 500;
+        line-height: 1.5;
+      }
+
+      .upcoming-type {
+        display: block;
+        margin-bottom: 0.15rem;
+        color: var(--ink-muted);
+        font-size: 0.62rem;
+        font-weight: 500;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+      }
+
+      .upcoming-title {
+        display: inline-block;
+        color: var(--ink);
+        font-family: var(--font-display);
+        font-size: 0.95rem;
+        font-weight: 400;
+        line-height: 1.35;
+        text-decoration: none;
+      }
+
+      .upcoming-title:hover {
+        color: var(--accent);
+      }
+
+      .upcoming-event {
+        margin: 0.2rem 0 0;
+        color: var(--ink-muted);
+        font-size: 0.74rem;
+        line-height: 1.45;
+      }
+
       .impact-section > .container > .section-label {
         margin-bottom: 1rem;
       }
@@ -930,6 +1010,11 @@
        RESPONSIVE
     ============================================================ */
       @media (max-width: 620px) {
+        .upcoming-item {
+          grid-template-columns: 6.5rem minmax(0, 1fr);
+          gap: 0.85rem;
+        }
+
         .highlights {
           grid-template-columns: 1fr 1fr;
         }
@@ -1087,6 +1172,52 @@
       </div>
     </section>
 
+
+    <section id="upcoming" class="upcoming-section" aria-labelledby="upcoming-title">
+      <div class="container">
+        <div class="upcoming-intro">
+          <p class="section-label">On the calendar</p>
+          <h2 id="upcoming-title">Upcoming engagements</h2>
+          <!-- <p>Talks and events I’m looking forward to. Each listing leaves the page after its final event date.</p> -->
+        </div>
+        <ul class="upcoming-list" aria-label="Upcoming engagements">
+          <li class="upcoming-item" data-end-date="2026-10-13">
+            <time class="upcoming-date" datetime="2026-10-12">12–13 October 2026</time>
+            <div>
+              <span class="upcoming-type">Talk</span>
+              <a class="upcoming-title" href="https://nordicapis.com/events/platform-summit-2026/" target="_blank" rel="noopener noreferrer">You don't need Kubernetes: How we scaled our API layer without the infrastructure theatrics</a>
+              <p class="upcoming-event">Nordic API Summit 2026 · Stockholm, Sweden</p>
+            </div>
+          </li>
+          <li class="upcoming-item" data-end-date="2026-10-23">
+            <time class="upcoming-date" datetime="2026-10-23">23 October 2026</time>
+            <div>
+              <span class="upcoming-type">Talk</span>
+              <a class="upcoming-title" href="https://birminghamtechweek.com/" target="_blank" rel="noopener noreferrer">You don't need Kubernetes: Scaling API layers without the theatrics</a>
+              <p class="upcoming-event">Birmingham Tech Week · Engineering &amp; Developer Conference · Birmingham, United Kingdom</p>
+            </div>
+          </li>
+          <li class="upcoming-item" data-end-date="2026-10-27">
+            <time class="upcoming-date" datetime="2026-10-27">27 October 2026</time>
+            <div>
+              <span class="upcoming-type">Talk</span>
+              <a class="upcoming-title" href="https://www.meetup.com/dotnetnorth/events/316872725/" target="_blank" rel="noopener noreferrer">You don't need Kubernetes: Scaling API layers without the theatrics</a>
+              <p class="upcoming-event">.NET North · Manchester, United Kingdom</p>
+            </div>
+          </li>
+          <li class="upcoming-item" data-end-date="2026-11-27">
+            <time class="upcoming-date" datetime="2026-11-27">27 November 2026</time>
+            <div>
+              <span class="upcoming-type">Talk</span>
+              <a class="upcoming-title" href="pages/speaking-tech-mids-26.html">You don't need Kubernetes: How we scaled our API layer without the infrastructure theatrics</a>
+              <p class="upcoming-event">TechMids Conf 2026 · Birmingham, United Kingdom</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+
     <section id="work">
       <div class="container">
         <div class="work-intro reveal">
@@ -1227,6 +1358,52 @@
       const statEls = document.querySelectorAll(
         ".highlight-number[data-target]",
       );
+
+      const upcomingSection = document.getElementById("upcoming");
+      const upcomingEvents = [
+        ...document.querySelectorAll("#upcoming .upcoming-item[data-end-date]"),
+      ];
+      let upcomingExpiryTimer;
+
+      const updateUpcomingEvents = () => {
+        const now = new Date();
+        const todayDate = [
+          now.getFullYear(),
+          String(now.getMonth() + 1).padStart(2, "0"),
+          String(now.getDate()).padStart(2, "0"),
+        ].join("-");
+
+        upcomingEvents.forEach((event) => {
+          const endDate = event.dataset.endDate;
+          if (!/^\d{4}-\d{2}-\d{2}$/.test(endDate)) {
+            throw new Error("Upcoming engagement has an invalid end date.");
+          }
+
+          if (endDate < todayDate) event.remove();
+        });
+
+        if (upcomingSection && upcomingSection.querySelector(".upcoming-item") === null) {
+          upcomingSection.hidden = true;
+        }
+
+        window.clearTimeout(upcomingExpiryTimer);
+        if (upcomingEvents.some((event) => event.isConnected)) {
+          const nextMidnight = new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            now.getDate() + 1,
+          );
+          upcomingExpiryTimer = window.setTimeout(
+            updateUpcomingEvents,
+            nextMidnight.getTime() - now.getTime() + 50,
+          );
+        }
+      };
+
+      updateUpcomingEvents();
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible") updateUpcomingEvents();
+      });
 
       const countUp = (el) => {
         const raw = el.dataset.target; // e.g. "5000"

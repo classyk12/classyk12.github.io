@@ -97,14 +97,18 @@
        SPEAKING & EVENTS
        EDIT: Add or remove events.
   ============================================================ -->
-    <section id="speaking" data-collapsible>
+    <section id="speaking">
       <div class="container">
         <div class="section-header reveal reveal-d1">
           <p class="section-label">Speaking &amp; Events</p>
-          <button class="collapse-toggle" type="button" aria-expanded="true">Hide</button>
         </div>
-        <div class="section-body">
-          <div class="event-list">
+        <section class="speaking-year section-collapsed" data-collapsible aria-labelledby="speaking-2026-title">
+          <div class="section-header reveal">
+            <h2 class="speaking-year-title" id="speaking-2026-title">2026</h2>
+            <button class="collapse-toggle" type="button" aria-expanded="false" aria-controls="speaking-2026-events">Show</button>
+          </div>
+          <div class="section-body" id="speaking-2026-events" inert>
+            <div class="event-list">
           <a
             class="event-item reveal reveal-d1"
             href="../pages/speaking-tech-mids-26.html"
@@ -228,9 +232,19 @@
             </div> -->
             </div>
           </a>
+            </div>
+        </div>
+        </section>
 
+        <section class="speaking-year" data-collapsible aria-labelledby="speaking-2025-title">
+          <div class="section-header reveal">
+            <h2 class="speaking-year-title" id="speaking-2025-title">2025</h2>
+            <button class="collapse-toggle" type="button" aria-expanded="true" aria-controls="speaking-2025-events">Hide</button>
+          </div>
+          <div class="section-body" id="speaking-2025-events">
+            <div class="event-list">
           <a
-            class="event-item reveal reveal-d3"
+            class="event-item reveal"
             href="../pages/speaking-tech-economy.html"
           >
             <div class="event-date">Apr<br />2025</div>
@@ -244,9 +258,9 @@
               </p>
             </div>
           </a>
-
-          <!-- ADD MORE HERE -->
-        </div>
+            </div>
+          </div>
+        </section>
       </div>
     </section>
 

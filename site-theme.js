@@ -93,16 +93,17 @@ document.querySelectorAll('section[data-collapsible]').forEach((section) =>
     {
         button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
         button.textContent = expanded ? 'Hide' : 'Show';
+        body.inert = !expanded;
         section.classList.toggle('section-collapsed', !expanded);
     };
+
+    setExpanded(button.getAttribute('aria-expanded') !== 'false');
 
     button.addEventListener('click', () =>
     {
         const expanded = button.getAttribute('aria-expanded') === 'true';
         setExpanded(!expanded);
     });
-
-    setExpanded(true);
 });
 
 document.getElementById('year')?.replaceChildren(String(new Date().getFullYear()));
