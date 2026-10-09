@@ -30,16 +30,18 @@ const revealObserver = new IntersectionObserver((entries) =>
 document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
 const currentPage = window.location.pathname.split('/').filter(Boolean).pop() || 'index.html';
-const activePage = currentPage === 'media-kit.html' ? 'media.html' : currentPage;
-document.querySelectorAll('.nav-links a').forEach((link) =>
+const activePage = currentPage.startsWith('speaking-')
+    ? 'speaking.html'
+    : currentPage === 'media-kit.html'
+        ? 'media.html'
+        : currentPage;
+document.querySelectorAll('.nav-links a[data-page]').forEach((link) =>
 {
-    const href = link.getAttribute('href') || '';
-    const resolvedPath = new URL(href, window.location.href).pathname;
-    const linkPage = resolvedPath.split('/').filter(Boolean).pop() || 'index.html';
-    const matches = linkPage === activePage || (href === '#hero' && activePage === 'index.html');
+    const matches = link.dataset.page === activePage;
     if (matches)
     {
         link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
     }
 });
 
@@ -91,16 +93,17 @@ document.querySelectorAll('section[data-collapsible]').forEach((section) =>
     {
         button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
         button.textContent = expanded ? 'Hide' : 'Show';
+        body.inert = !expanded;
         section.classList.toggle('section-collapsed', !expanded);
     };
+
+    setExpanded(button.getAttribute('aria-expanded') !== 'false');
 
     button.addEventListener('click', () =>
     {
         const expanded = button.getAttribute('aria-expanded') === 'true';
         setExpanded(!expanded);
     });
-
-    setExpanded(true);
 });
 
 document.getElementById('year')?.replaceChildren(String(new Date().getFullYear()));

@@ -48,20 +48,22 @@
   </head>
   <body>
     <div id="cursor-dot"></div>
-    <nav>
+    <nav aria-label="Main navigation">
       <div class="container">
         <a class="brand" href="../index.html">Faith Sodipe</a>
         <ul class="nav-links">
-          <a href="../pages/about.html">About Faith</a>
-          <a href="../pages/speaking.html">Speaking</a>
-          <a href="../pages/media.html">Media</a>
-          <a href="../pages/writing.html">Publications</a>
-          <a href="../pages/projects.html">Projects</a>
-          <a href="../pages/contact.html">Contact</a>
+          <li><a href="../index.html" data-page="index.html">Home</a></li>
+          <li><a href="../pages/about.html" data-page="about.html">About</a></li>
+          <li><a href="../pages/projects.html" data-page="projects.html">Engineering</a></li>
+          <li><a href="../pages/community.html" data-page="community.html">Community</a></li>
+          <li><a href="../pages/speaking.html" data-page="speaking.html">Speaking</a></li>
+          <li><a href="../pages/writing.html" data-page="writing.html">Articles</a></li>
+          <li><a href="../pages/media.html" data-page="media.html">Media</a></li>
+          <li><a href="../pages/contact.html" data-page="contact.html">Contact</a></li>
         </ul>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5" /><line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" /><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" /><line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" /><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" /></svg>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5" /><line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" /><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" /><line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" /><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" /></svg>
         </button>
       </div>
     </nav>
@@ -95,14 +97,18 @@
        SPEAKING & EVENTS
        EDIT: Add or remove events.
   ============================================================ -->
-    <section id="speaking" data-collapsible>
+    <section id="speaking">
       <div class="container">
         <div class="section-header reveal reveal-d1">
           <p class="section-label">Speaking &amp; Events</p>
-          <button class="collapse-toggle" type="button" aria-expanded="true">Hide</button>
         </div>
-        <div class="section-body">
-          <div class="event-list">
+        <section class="speaking-year section-collapsed" data-collapsible aria-labelledby="speaking-2026-title">
+          <div class="section-header reveal">
+            <h2 class="speaking-year-title" id="speaking-2026-title">2026</h2>
+            <button class="collapse-toggle" type="button" aria-expanded="false" aria-controls="speaking-2026-events">Show</button>
+          </div>
+          <div class="section-body" id="speaking-2026-events" inert>
+            <div class="event-list">
           <a
             class="event-item reveal reveal-d1"
             href="../pages/speaking-tech-mids-26.html"
@@ -110,10 +116,37 @@
             <div class="event-date">November<br />2026</div>
             <div>
               <p class="event-title">
-                <span class="event-badge">Speaking</span>You dont need Kubernetes,
+                <span class="event-badge">Speaking</span>You don't need Kubernetes,
                 How we scaled our API layer without the infrastructure theatrics
               </p>
               <p class="event-desc">TechMids Conf 2026 &nbsp;·&nbsp; Birmingham, UK</p>
+            </div>
+          </a>
+
+          <a
+            class="event-item reveal reveal-d1"
+            href="../pages/speaking-dotnet-north-26.html"
+          >
+            <div class="event-date">October<br />2026</div>
+            <div>
+              <p class="event-title">
+                <span class="event-badge">Speaking</span>You don't need Kubernetes,
+                How we scaled our API layer without the infrastructure theatrics
+              </p>
+              <p class="event-desc">Dotnet North 2026 &nbsp;·&nbsp; Manchester, UK</p>
+            </div>
+          </a>
+          <a
+            class="event-item reveal reveal-d1"
+            href="../pages/speaking-birmingham-tech-week-26.html"
+          >
+            <div class="event-date">October<br />2026</div>
+            <div>
+              <p class="event-title">
+                <span class="event-badge">Speaking</span>You don't need Kubernetes,
+                How we scaled our API layer without the infrastructure theatrics
+              </p>
+              <p class="event-desc">Birmingham Tech Week 2026 &nbsp;·&nbsp; Birmingham, UK</p>
             </div>
           </a>
             <a
@@ -123,7 +156,7 @@
             <div class="event-date">October<br />2026</div>
             <div>
               <p class="event-title">
-                <span class="event-badge">Speaking</span>You dont need Kubernetes,
+                <span class="event-badge">Speaking</span>You don't need Kubernetes,
                 How we scaled our API layer without the infrastructure theatrics
               </p>
               <p class="event-desc">Nordic API Summit 2026 &nbsp;·&nbsp; Stockholm, Sweden</p>
@@ -226,9 +259,19 @@
             </div> -->
             </div>
           </a>
+            </div>
+        </div>
+        </section>
 
+        <section class="speaking-year" data-collapsible aria-labelledby="speaking-2025-title">
+          <div class="section-header reveal">
+            <h2 class="speaking-year-title" id="speaking-2025-title">2025</h2>
+            <button class="collapse-toggle" type="button" aria-expanded="true" aria-controls="speaking-2025-events">Hide</button>
+          </div>
+          <div class="section-body" id="speaking-2025-events">
+            <div class="event-list">
           <a
-            class="event-item reveal reveal-d3"
+            class="event-item reveal"
             href="../pages/speaking-tech-economy.html"
           >
             <div class="event-date">Apr<br />2025</div>
@@ -242,9 +285,9 @@
               </p>
             </div>
           </a>
-
-          <!-- ADD MORE HERE -->
-        </div>
+            </div>
+          </div>
+        </section>
       </div>
     </section>
 
