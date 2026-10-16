@@ -432,6 +432,76 @@ p {
     gap: .75rem;
 }
 
+.engineering-experience {
+    padding-top: 2rem;
+}
+
+.experience-intro {
+    max-width: 48rem;
+    margin: .5rem 0 1.5rem;
+}
+
+.experience-list {
+    display: grid;
+    gap: .85rem;
+}
+
+.experience-card {
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--surface);
+}
+
+.experience-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.experience-heading h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.experience-company,
+.experience-dates {
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.experience-dates {
+    flex: 0 0 auto;
+}
+
+.experience-card ul {
+    margin: .8rem 0 0;
+    padding-left: 1.25rem;
+}
+
+.experience-card li {
+    color: var(--muted);
+    padding-left: .2rem;
+}
+
+.experience-card li strong {
+    color: var(--ink);
+    font-weight: 700;
+}
+
+.experience-card li + li {
+    margin-top: .35rem;
+}
+
+.engineering-skills {
+    margin-top: 1rem;
+}
+
+.engineering-skills p + p {
+    margin-top: .35rem;
+}
+
 /* Keep wrapped links looking like plain cards, not underlined links */
 a.card,
 a.card-item,
@@ -1258,6 +1328,12 @@ footer {
     .grid-2,
     .grid-3 {
         grid-template-columns: 1fr;
+    }
+
+    .experience-heading {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: .2rem;
     }
 }
 
