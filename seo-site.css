@@ -272,6 +272,11 @@ main {
     object-position: center 20%;
 }
 
+.page-hero-banner img.nordic-hero-image {
+    object-position: center 100%;
+    transform: scale(0.96);
+}
+
 .page-hero-overlay {
     position: absolute;
     inset: 0;
