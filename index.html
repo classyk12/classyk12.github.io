@@ -1155,18 +1155,18 @@
         <div class="highlights reveal reveal-d1">
           <div class="highlight-item">
             <span class="highlight-number" data-target="500000" data-suffix="k+">500k+</span>
-            <span class="highlight-label">Active users of LIT by FirstBank, a product I worked on</span>
+            <span class="highlight-label"> Users served</span>
           </div>
           <div class="highlight-item">
-            <span class="highlight-number" data-target="100000" data-suffix="k+">100k+</span>
-            <span class="highlight-label">Transacted through Crossborda, a product I worked on</span>
+            <span class="highlight-number" data-target="1000000" data-suffix="M+">1M+</span>
+            <span class="highlight-label">Transaction value</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-number" data-target="20" data-suffix="+">20+</span>
+            <span class="highlight-label">Students coached and mentored</span>
           </div>
           <div class="highlight-item">
             <span class="highlight-number" data-target="12" data-suffix="+">12+</span>
-            <span class="highlight-label">Students coached through Codebar</span>
-          </div>
-          <div class="highlight-item">
-            <span class="highlight-number" data-target="8" data-suffix="+">8+</span>
             <span class="highlight-label">Conference and panel appearances</span>
           </div>
         </div>
@@ -1182,28 +1182,12 @@
           <!-- <p>Talks and events I’m looking forward to. Each listing leaves the page after its final event date.</p> -->
         </div>
         <ul class="upcoming-list" aria-label="Upcoming engagements">
-          <li class="upcoming-item" data-end-date="2026-10-13">
-            <time class="upcoming-date" datetime="2026-10-12">12–13 October 2026</time>
+          <li class="upcoming-item" data-end-date="2026-11-14">
+            <time class="upcoming-date" datetime="2026-11-14">14 November 2026</time>
             <div>
-              <span class="upcoming-type">Talk</span>
-              <a class="upcoming-title" href="pages/speaking-nordic-api-summit.html">You don't need Kubernetes: How we scaled our API layer without the infrastructure theatrics</a>
-              <p class="upcoming-event">Nordic API Summit 2026 · Stockholm, Sweden</p>
-            </div>
-          </li>
-          <li class="upcoming-item" data-end-date="2026-10-23">
-            <time class="upcoming-date" datetime="2026-10-23">23 October 2026</time>
-            <div>
-              <span class="upcoming-type">Talk</span>
-              <a class="upcoming-title" href="pages/speaking-birmingham-tech-week-26.html">You don't need Kubernetes: Scaling API layers without the theatrics</a>
-              <p class="upcoming-event">Birmingham Tech Week · Engineering &amp; Developer Conference · Birmingham, United Kingdom</p>
-            </div>
-          </li>
-          <li class="upcoming-item" data-end-date="2026-10-27">
-            <time class="upcoming-date" datetime="2026-10-27">27 October 2026</time>
-            <div>
-              <span class="upcoming-type">Talk</span>
-              <a class="upcoming-title" href="pages/speaking-dotnet-north-26.html">You don't need Kubernetes: Scaling API layers without the theatrics</a>
-              <p class="upcoming-event">.NET North · Manchester, United Kingdom</p>
+              <span class="upcoming-type">Panel</span>
+              <a class="upcoming-title" href="pages/speaking-tech-haven-2.html">From Curious to Career</a>
+              <p class="upcoming-event"> Career Discovery Programme 2.0 · Liverpool, United Kingdom</p>
             </div>
           </li>
           <li class="upcoming-item" data-end-date="2026-11-27">
@@ -1411,10 +1395,11 @@
         const suffix = el.dataset.suffix; // e.g. "k+"
         const target = parseInt(raw, 10);
 
-        // For large numbers, show abbreviated (5000 → 5k+)
-        const display = suffix.includes("k")
-          ? (n) => Math.round(n / 1000) + suffix
-          : (n) => n + suffix;
+        const display = suffix.startsWith("M")
+          ? (n) => Math.round(n / 100000) / 10 + suffix
+          : suffix.startsWith("k")
+            ? (n) => Math.round(n / 1000) + suffix
+            : (n) => n + suffix;
 
         let start = null;
         const duration = 1200;
